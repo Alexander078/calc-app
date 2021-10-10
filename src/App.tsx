@@ -1,6 +1,6 @@
 /* eslint no-eval:0 */
 // importacion
-import React, {useState} from 'react';
+import React, {useState, FC} from 'react';
 import words from 'lodash.words'
 import Result from './components/Result';
 import Functions from './components/Functions';
@@ -9,7 +9,7 @@ import MathOperations from './components/MathOperations';
 import './App.css';
 
 // generacion de la funcion del componente
-const App = () => {    
+const App : FC = () => {    
     //Array destructuring
     const [stack, setStack] = useState("");   
 
@@ -17,7 +17,7 @@ const App = () => {
 
     const value = items.length > 0 ? items[items.length-1] : "0"
 
-    const clickHandlerFunction = number => {//console.log(number)
+    const clickHandlerFunction = (number: string) => {//console.log(number)
         setStack( `${stack}${number}`) }
 
     return (<main className='react-calculator'>

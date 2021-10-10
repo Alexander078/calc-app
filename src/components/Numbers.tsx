@@ -1,12 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Button from './Button'
-
+import React, {FC} from 'react'
+import Button, {ButtonClickHandler} from './Button'
+ 
 const numbers = [7,8,9,4,5,6,1,2,3,0]
 
-const renderButtons = onClickNumber =>{
+const renderButtons = ( onClickNumber: ButtonClickHandler) =>{
  
-  const RenderButton = number => (
+  const RenderButton = (number: number) => (
     <Button key={number} text={number.toString()} clickHandler={onClickNumber}/>
   ) 
 
@@ -14,7 +13,11 @@ const renderButtons = onClickNumber =>{
    
 }
 
-const Numbers = ({onClickNumber}) => (
+type Props = {
+  onClickNumber: ButtonClickHandler
+}
+
+const Numbers: FC<Props> = ({onClickNumber}) => (
     <section className="numbers">
         {
             renderButtons(onClickNumber)
@@ -22,9 +25,5 @@ const Numbers = ({onClickNumber}) => (
         }
     </section>
 )
-
-Numbers.propTypes = {
-    onClickNumber : PropTypes.func.isRequired
-}
 
 export default Numbers
